@@ -53,6 +53,7 @@ public class Book {
     public void setIsCheckedOutTo(String isCheckedOutTo) {
         this.isCheckedOutTo = isCheckedOutTo;
     }
+
     public void checkOut(String name){
         System.out.println(name+ ", Enjoy reading "+title+"!");
     }
@@ -60,16 +61,6 @@ public class Book {
         System.out.println("You have successfully returned "+title);
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", isbn='" + isbn + '\'' +
-                ", title='" + title + '\'' +
-                ", isCheckedOut=" + isCheckedOut +
-                ", isCheckedOutTo='" + isCheckedOutTo + '\'' +
-                '}';
-    }
 }
 
 
