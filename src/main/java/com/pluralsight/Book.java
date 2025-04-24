@@ -59,6 +59,17 @@ public class Book {
     public void checkIn(){
         System.out.println("You have successfully returned "+title);
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", isbn='" + isbn + '\'' +
+                ", title='" + title + '\'' +
+                ", isCheckedOut=" + isCheckedOut +
+                ", isCheckedOutTo='" + isCheckedOutTo + '\'' +
+                '}';
+    }
 }
 
 

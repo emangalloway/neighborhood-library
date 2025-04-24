@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class NeighborhoodLibrary {
@@ -25,20 +26,42 @@ public class NeighborhoodLibrary {
         //Create a while loop for the menu
         while (true){
             System.out.println("Welcome to the Library");
-            System.out.println("1 - Library Home Screen");
-            System.out.println("2 - Show available books");
-            System.out.println("3 - Show checked out books");
-            System.out.println("4 - Check in a book");
-            System.out.println("5 - Quit");
+            System.out.println("Library Home Screen");
+            System.out.println(" ");
+            System.out.println("1 - Show available books");
+            System.out.println("2 - Show checked out books");
+            System.out.println("3 - Check in a book");
+            System.out.println("4 - Quit");
+            System.out.println(" ");
             System.out.println("Enter option: ");
             int enterOption = myscanner.nextInt();
-            
+            myscanner.nextLine();
 
+            //Creating switch case in place for if statement
+            switch (enterOption){
+                case 1:
+                    listBooksCheckedIn();
+                    break;
+                case 2:
+
+
+            }
 
         }
 
 
+    // This method displays available books    
+    } public static void listBooksCheckedIn(){
+        System.out.println("Available Books");
+        // Create a for loop to iterate books in array
+        for (int i = 0; i < numOfBooks; i++) {
+            System.out.println(books[i]);
+            
+        }
+    }public static void listBooksCheckedOut(){
+        System.out.println("Books checked out");
+        //create a loop that iterates books checked out
 
 
+        }
     }
-}
