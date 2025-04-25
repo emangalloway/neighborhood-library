@@ -49,9 +49,8 @@ public class NeighborhoodLibrary {
                     return;
             }
         }
-        // This method displays available books menu page
-    }
 
+    }// This method displays available books menu page
     public static void listBooksCheckedIn(Scanner scanner) {
         System.out.println("Available Books");
         // Create a for loop to iterate books in array
@@ -86,7 +85,6 @@ public class NeighborhoodLibrary {
 
         // This method is for the Show checked out books menu page
     }
-
     public static void listBooksCheckedOut(Scanner scanner) {
         System.out.println("Books checked out");
         //create a loop that iterates books checked out
@@ -111,9 +109,10 @@ public class NeighborhoodLibrary {
                         book1.setCheckedOut(false);
                         book1.setIsCheckedOutTo(" ");
                         System.out.println(fullName+ ", You have successfully returned: "+book1.getTitle());
+                        return;
                     }
                 }
-        }
+            }
     }
 }
 
