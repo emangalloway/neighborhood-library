@@ -24,7 +24,7 @@ public class NeighborhoodLibrary {
         Scanner myscanner = new Scanner(System.in);
 
         //Create a while loop for the menu
-        while (true){
+        while (true) {
             System.out.println("Welcome to the Library");
             System.out.println("Library Home Screen");
             System.out.println(" ");
@@ -37,40 +37,43 @@ public class NeighborhoodLibrary {
             myscanner.nextLine();
 
             //Creating switch case in place for if statement
-            switch (enterOption){
+            switch (enterOption) {
                 case 1:
                     listBooksCheckedIn(myscanner);
                     break;
-                case 2://checkout section
+                case 2:
+                    listBooksCheckedOut(myscanner);
                     break;
                 case 3:
                     System.out.println("Thanks for visiting the Library come back soon!");
                     return;
             }
         }
-    // This method displays available books menu page
-    } public static void listBooksCheckedIn(Scanner scanner){
+        // This method displays available books menu page
+    }
+
+    public static void listBooksCheckedIn(Scanner scanner) {
         System.out.println("Available Books");
         // Create a for loop to iterate books in array
         for (int i = 0; i < book.length; i++) {
-            if (book[i] != null && !book[i].isCheckedOut()){
-                System.out.println("ID: "+book[i].getId()+", Title: "+book[i].getTitle());
+            if (book[i] != null && !book[i].isCheckedOut()) {
+                System.out.println("ID: " + book[i].getId() + ", Title: " + book[i].getTitle());
             }
         }// Ask user to make a choice and create scanner
         Scanner scanner1 = new Scanner(System.in);
         System.out.println("If you would like to check out a book, Enter ID: ");
         System.out.println("Press 0 to go back to Home");
-         int option = scanner1.nextInt();
-         scanner1.nextLine();
+        int option = scanner1.nextInt();
+        scanner1.nextLine();
 
-         //If statement to return to home screen
-         if (option == 0){
-             return;
-         }
-         //for loop to find and checkout book
+        //If statement to return to home screen
+        if (option == 0) {
+            return;
+        }
+        //for loop to find and checkout book
         for (Book bok : book) {
             //If statement that take the users input to start check out process
-            if (bok != null && bok.getId()==option){
+            if (bok != null && bok.getId() == option) {
                 System.out.println("Enter your full name: ");
                 String fullName = scanner.nextLine();
                 //Set the book is checked out status
@@ -82,28 +85,35 @@ public class NeighborhoodLibrary {
         }
 
         // This method is for the Show checked out books menu page
-    } public static void listBooksCheckedOut(Scanner scanner){
-        System.out.println("Books checked out");
+    }
 
+    public static void listBooksCheckedOut(Scanner scanner) {
+        System.out.println("Books checked out");
         //create a loop that iterates books checked out
         for (int i = 0; i < book.length; i++) {
-            if (book[i] != null && book[i].isCheckedOut()){
-                System.out.println("ID: "+book[i].getId()+", Title: "+book[i].getTitle());
-            }
-            //Ask user if they want to check in a book or go back
-            System.out.println("Enter full name to check book in: ");
-            System.out.println("Press 0 to quit");
-            String fullName = scanner.nextLine();
-            scanner.next();
-            int exit = scanner.nextInt();
+            if (book[i] != null && book[i].isCheckedOut()) {
+                System.out.println("ID: " + book[i].getId() + ", Title: " + book[i].getTitle()+", Is checked out to: "+book[i].getIsCheckedOutTo());
+            }// ask user to make a choice
+            System.out.println("Press C to check a book in: ");
+            System.out.println("Press X If you would like to return to home page: ");
+            String option = scanner.nextLine();
 
-            //if statement to exit Checkout page
-            if (exit == 0 ){
+            //if statement to return to home page or continue to check in portion
+            if (option.equalsIgnoreCase("x")) {
                 return;
-            }
-            //for loop to find and check in book
+            }//for loop to find and check in book
+                for (Book book1 : book) {
+                    if (book1 != null && book1.isCheckedOut()) {
+                        System.out.println("Enter You full name to return book: ");
+                        String fullName = scanner.nextLine();
+                        //Set book has returned status
+                        book1.checkIn();
+                        book1.setCheckedOut(false);
+                        book1.setIsCheckedOutTo(" ");
+                        System.out.println(fullName+ ", You have successfully returned: "+book1.getTitle());
+                    }
+                }
         }
-
     }
+}
 
-    }
